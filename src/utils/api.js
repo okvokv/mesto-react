@@ -50,7 +50,7 @@ class Api {
 
 	//метод замены аватара пользователя	
 	setAvatar(_link) {
-		this._request('users/me/avatar', {
+		return this._request('users/me/avatar', {
 			method: 'PATCH',
 			headers: this._headers,
 			body: JSON.stringify({
@@ -61,7 +61,7 @@ class Api {
 
 	//метод сохранения данных пользователя в профиль на сервер
 	setUserInfo(_name, _description) {
-		this._request('users/me', {
+		return this._request('users/me', {
 			method: 'PATCH',
 			headers: this._headers,
 			body: JSON.stringify({
@@ -73,7 +73,7 @@ class Api {
 
 	//метод добавления новой карточки на сервер и получения информации о результате
 	addNewCard(_cardName, _cardLink) {
-		this._request('cards', {
+		return this._request('cards', {
 			method: 'POST',
 			headers: this._headers,
 			body: JSON.stringify({
@@ -85,7 +85,7 @@ class Api {
 
 	//метод удаления своей карточки на сервере и получения информации о результате
 	deleteCard(_cardId) {
-		this._request('cards/_cardId', {
+		return this._request('cards/_cardId', {
 			method: 'DELETE',
 			headers: this._headers
 		})
@@ -93,7 +93,7 @@ class Api {
 
 	//метод установки лайка и получения данных о результате
 	setLike(_cardId) {
-		this._request('cards/_cardId/likes', {
+		return this._request('cards/_cardId/likes', {
 			method: 'PUT',
 			headers: this._headers
 		})
@@ -101,7 +101,7 @@ class Api {
 
 	//метод удаления лайка (поставленного пользователем)
 	deleteLike(_cardId) {
-		this._request('cards/_cardId/likes', {
+		return this._request('cards/_cardId/likes', {
 			method: 'DELETE',
 			headers: this._headers
 		})

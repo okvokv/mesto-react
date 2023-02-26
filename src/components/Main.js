@@ -41,7 +41,7 @@ function Main(props) {
 			{/*== Секция элементы ===============================================*/}
 			<section className="elements">
 				<ul className="elements__grid">
-					{cardsData.map(({ _id, ...cardData }) => (
+					{cardsData.map(({_id, ...cardData }) => (
 						<Card
 							key={_id}
 							cardData={cardData}

@@ -1,10 +1,9 @@
 //гибридный элемент одной карточки массива
 function Card(props) {
-	console.log(props)
 	function handleClick() {
 		props.onImageClick(props.cardData);
 	}
-
+ 
 	return (
 		<li className="element">
 
