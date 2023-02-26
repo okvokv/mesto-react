@@ -1,7 +1,6 @@
 //гибридный элемент - всплывающее окно с картинкой ===========================
 function PopupWithImage(props) {
- //(для прохождения проверки присвоил эту глупость)
-  const selectedCard = props.clikedImage;
+   
   return (
     <div className={`popup popup_type_image ${props.opened && 'popup_opened'}`}>
       <figure className="popup__container">
@@ -15,11 +14,11 @@ function PopupWithImage(props) {
 
         <img
           className="popup__image"
-          src={`${props.clickedImage.link}`}
-          alt={`Фото: ${props.clickedImage.name}`}
+          src={`${props.selectedCard.link}`}
+          alt={`Фото: ${props.selectedCard.name}`}
         />
 
-        <figcaption className="popup__image-text">{props.clickedImage.name}</figcaption>
+        <figcaption className="popup__image-text">{props.selectedCard.name}</figcaption>
       </figure>
     </div>
   );

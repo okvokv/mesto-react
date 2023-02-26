@@ -156,7 +156,7 @@ function App() {
 
       {/*Всплывающее окно с картинкой */}
       <PopupWithImage
-        clickedImage={clickedImage}
+        selectedCard={clickedImage}
         opened={popupWithImageOpened}
         onClose={closeAllPopups}
       />
