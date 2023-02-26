@@ -5,7 +5,7 @@ import Header from './Header.js';
 import Main from './Main.js';
 import Footer from './Footer.js';
 import PopupWithForm from './PopupWithForm.js';
-import PopupWithImage from './ImagePopup.js';
+import ImagePopup from './ImagePopup.js';
 
 
 function App() {
@@ -38,7 +38,7 @@ function App() {
     setProfileEditPopupOpened(false);
     setCardAddPopupOpened(false);
     //setPopupWithConfirmationOpened(false);
-    setPopupWithImageOpened(false);
+    setImagePopupOpened(false);
     setClickedImage({});
   }
 
@@ -69,10 +69,10 @@ function App() {
   //объявление данных нажатой картики в глобальной области
   const [clickedImage, setClickedImage] = useState({});
   //функция обработки нажатия на картинку
-  const [popupWithImageOpened, setPopupWithImageOpened] = useState(function () { return false });
+  const [imagePopupOpened, setImagePopupOpened] = useState(function () { return false });
   function handleImageClick(cardData) {
     setClickedImage(cardData);
-    setPopupWithImageOpened(true);
+    setImagePopupOpened(true);
   }
 
   return (
@@ -155,9 +155,9 @@ function App() {
       />
 
       {/*Всплывающее окно с картинкой */}
-      <PopupWithImage
+      <ImagePopup
         selectedCard={clickedImage}
-        opened={popupWithImageOpened}
+        opened={imagePopupOpened}
         onClose={closeAllPopups}
       />
 
