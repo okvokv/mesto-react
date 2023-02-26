@@ -1,6 +1,6 @@
 //гибридный элемент - всплывающее окно с картинкой ===========================
-function ImagePopup (props) {
-   
+function ImagePopup(props) {
+
   return (
     <div className={`popup popup_type_image ${props.opened && 'popup_opened'}`}>
       <figure className="popup__container">
@@ -9,7 +9,7 @@ function ImagePopup (props) {
           className="popup__close-button"
           type="button"
           aria-label="кнопка Закрыть"
-          onClick={props.onClose} > 
+          onClick={props.onClose} >
         </button>
 
         <img

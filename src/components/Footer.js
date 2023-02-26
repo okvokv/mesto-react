@@ -3,7 +3,7 @@ import { useState } from 'react';
 //Подножие сайта ======================================================
 function Footer() {
   //получение значения года
-  const [year, setYear] = useState(function () { return new Date().getFullYear() })
+  const [year, setYear] = useState(new Date().getFullYear());
 
   return (
     <footer className="footer">

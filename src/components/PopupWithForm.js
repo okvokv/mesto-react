@@ -4,7 +4,7 @@ function PopupWithForm(props) {
 		<div className={`popup popup_type_${props.type} ${props.opened && 'popup_opened'}`}>
 			<div className="popup__container">
 				<button className="popup__close-button" type="button" aria-label="кнопка Закрыть" onClick={props.onClose}></button>
-				<form className={`form form_type_${props.type}`} name={`${props.type}Form`} novalidate>
+				<form className={`form form_type_${props.type}`} name={`${props.type}Form`}>
 					<h3 className="form__title">{props.formTitle}</h3>
 					{/* сюда поступает ядро попапов */}
 					{props.children}

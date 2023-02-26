@@ -1,8 +1,8 @@
 //гибридный элемент одной карточки массива
 function Card(props) {
-
-	function handleClick () {
-   props.onImageClick(props.cardData);
+	console.log(props)
+	function handleClick() {
+		props.onImageClick(props.cardData);
 	}
 
 	return (
@@ -12,7 +12,7 @@ function Card(props) {
 				className="element__image"
 				src={`${props.cardData.link}`}
 				alt={`Фото ${props.cardData.name}`}
-			  onClick={handleClick}                                  
+				onClick={handleClick}
 			/>
 
 			<button className="element__trash-button" type="button"></button>

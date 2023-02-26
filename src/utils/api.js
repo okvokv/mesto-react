@@ -11,8 +11,14 @@ class Api {
 		this._headers = headers;
 	};
 
+	//общая часть запроса
+	_request(_endUrl, _options) {
+		return fetch(`${this._baseUrl}/${_endUrl}`, _options)
+			.then((res) => this._checkResponse(res))
+	};
+
 	//общий метод обработки ответа
-	_responseChain(res) {
+	_checkResponse(res) {
 		if (res.ok) {
 			//если запрос выполнен
 			return res.json()
@@ -23,20 +29,18 @@ class Api {
 
 	//метод получения данных пользователя
 	_getUserData() {
-		return fetch(`${this._baseUrl}/users/me`, {
+		return this._request('users/me', {
 			method: 'GET',
-			headers: this._headers,
+			headers: this._headers
 		})
-			.then(res => this._responseChain(res))
 	};
 
 	//метод получения массива карточек с сервера
 	getAllCardsData() {
-		return fetch(`${this._baseUrl}/cards`, {
+		return this._request('cards', {
 			method: 'GET',
 			headers: this._headers
 		})
-			.then(res => this._responseChain(res))
 	};
 
 	//метод получения начальных данных (общий)
@@ -46,19 +50,18 @@ class Api {
 
 	//метод замены аватара пользователя	
 	setAvatar(_link) {
-		return fetch(`${this._baseUrl}/users/me/avatar`, {
+		this._request('users/me/avatar', {
 			method: 'PATCH',
 			headers: this._headers,
 			body: JSON.stringify({
 				avatar: _link
 			})
 		})
-			.then(res => this._responseChain(res))
 	};
 
 	//метод сохранения данных пользователя в профиль на сервер
 	setUserInfo(_name, _description) {
-		return fetch(`${this._baseUrl}/users/me`, {
+		this._request('users/me', {
 			method: 'PATCH',
 			headers: this._headers,
 			body: JSON.stringify({
@@ -66,12 +69,11 @@ class Api {
 				about: _description
 			})
 		})
-			.then(res => this._responseChain(res))
 	};
 
 	//метод добавления новой карточки на сервер и получения информации о результате
 	addNewCard(_cardName, _cardLink) {
-		return fetch(`${this._baseUrl}/cards`, {
+		this._request('cards', {
 			method: 'POST',
 			headers: this._headers,
 			body: JSON.stringify({
@@ -79,34 +81,30 @@ class Api {
 				link: _cardLink
 			})
 		})
-			.then(res => this._responseChain(res))
 	};
 
 	//метод удаления своей карточки на сервере и получения информации о результате
 	deleteCard(_cardId) {
-		return fetch(`${this._baseUrl}/cards/${_cardId}`, {
+		this._request('cards/_cardId', {
 			method: 'DELETE',
 			headers: this._headers
 		})
-			.then(res => this._responseChain(res))
 	};
 
 	//метод установки лайка и получения данных о результате
 	setLike(_cardId) {
-		return fetch(`${this._baseUrl}/cards/${_cardId}/likes`, {
+		this._request('cards/_cardId/likes', {
 			method: 'PUT',
 			headers: this._headers
 		})
-			.then(res => this._responseChain(res))
 	};
 
 	//метод удаления лайка (поставленного пользователем)
 	deleteLike(_cardId) {
-		return fetch(`${this._baseUrl}/cards/${_cardId}/likes`, {
+		this._request('cards/_cardId/likes', {
 			method: 'DELETE',
 			headers: this._headers
 		})
-			.then(res => this._responseChain(res))
 	};
 
 };
