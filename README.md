@@ -14,5 +14,5 @@
 
 * Имеется модуль обмена данными с сервером.
 
-* https://okvokv.github.io/mesto
+* https://okvokv.github.io/mesto-react
    

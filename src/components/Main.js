@@ -41,9 +41,9 @@ function Main(props) {
 			{/*== Секция элементы ===============================================*/}
 			<section className="elements">
 				<ul className="elements__grid">
-					{cardsData.map(({_id, ...cardData }) => (
+					{cardsData.map(cardData => (
 						<Card
-							key={_id}
+							key={cardData._id}
 							cardData={cardData}
 							onImageClick={props.onImageClick}
 						/>)
