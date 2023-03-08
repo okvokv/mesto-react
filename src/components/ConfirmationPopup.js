@@ -19,4 +19,5 @@ function PopupWithConfirmation(props) {
 		/>
 	);
 };
+
 export default PopupWithConfirmation;

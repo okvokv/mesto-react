@@ -89,7 +89,6 @@ class Api {
 
 	//метод установки лайка и получения данных о результате
 	setLike(_cardId) {
-		console.log('доб.')
 		return this._request(`cards/${_cardId}/likes`, {
 			method: 'PUT',
 			headers: this._headers
@@ -98,7 +97,6 @@ class Api {
 
 	//метод удаления лайка (поставленного пользователем)
 	deleteLike(_cardId) {
-		console.log('снят')
 		return this._request(`cards/${_cardId}/likes`, {
 			method: 'DELETE',
 			headers: this._headers
