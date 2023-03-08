@@ -91,11 +91,12 @@ function App() {
       .then(() => {
         const newCardsData = cardsData.filter(cardData => cardData._id !== cardId);
         setCardsData(newCardsData);
+        closeAllPopups();
       })
       .catch(err => console.log('Внутренняя ошибка: ', err))
   };
 
-  //------------------------------------------------------------------------------------
+  //-----------------------------------------------------------------------------------
   //функция обработки нажатия на кнопку <Like>
   function handleLikeClick(cardData) {
     //проверка наличия лайка на карточке
@@ -148,15 +149,15 @@ function App() {
       .catch(err => console.log('Внутренняя ошибка: ', err))
   };
 
-  //--------------------------------------------------------------------------------
+  //--------------------------------------------------------------------------
 
   return (
     <CurrentUserContext.Provider value={currentUserData}>
       <div className="page">
-        {/*Секция заголовок =================================================== */}
+        {/*Секция заголовок =========================================== */}
         <Header />
 
-        {/*Основная секция ==================================================== */}
+        {/*Основная секция ============================================ */}
         <Main
           cardsData={cardsData}
           onAvatarBtnClick={handleAvatarBtnClick}
@@ -167,31 +168,31 @@ function App() {
           onLikeClick={handleLikeClick}
         />
 
-        {/*Подножие сайта =======================================================*/}
+        {/*Подножие сайта ===============================================*/}
         <Footer />
 
-        {/*Всплывающие окна c формой смены аватара ==============================*/}
+        {/*Всплывающие окна c формой смены аватара ======================*/}
         <AvatarEditPopup
           opened={avatarEditPopupOpened}
           onClose={closeAllPopups}
           onUpdateAvatar={handleUpdateAvatar}
         />
 
-        {/*Всплывающие окна c формой редактирования профиля =====================*/}
+        {/*Всплывающие окна c формой редактирования профиля ==============*/}
         <ProfileEditPopup
           opened={profileEditPopupOpened}
           onClose={closeAllPopups}
           onUpdateUser={handleUpdateUser}
         />
 
-        {/*Всплывающие окна c формой добавления контента ========================*/}
+        {/*Всплывающие окна c формой добавления контента =================*/}
         <CardAddPopup
           opened={cardAddPopupOpened}
           onClose={closeAllPopups}
           onCardAdd={handleCardAdd}
         />
 
-        {/*Всплывающее окно с формой подтверждения удаления =====================*/}
+        {/*Всплывающее окно с формой подтверждения удаления ==============*/}
         <PopupWithConfirmation
           clickedImage={clickedImage}
           opened={popupWithConfirmationOpened}
@@ -199,7 +200,7 @@ function App() {
           onCardDelete={handleDeleteCard}
         />
 
-        {/*Всплывающее окно с картинкой ======================================= */}
+        {/*Всплывающее окно с картинкой ================================= */}
         <ImagePopup
           selectedCard={clickedImage}
           opened={imagePopupOpened}

@@ -34,10 +34,25 @@ function CardAddPopup(props) {
 			onSubmit={handleSubmit}
 		>
 			{/* == ядро с формой добавления контента ===============================*/}
-			<input className="form__field form__field_type_cardname" type="text" placeholder="Название" name="cardName" required
-				minLength="2" maxLength="30" value={cardName} onChange={handleSetName}/>
+			<input
+				className="form__field form__field_type_cardname"
+				type="text"
+				placeholder="Название"
+				name="cardName"
+				required
+				minLength="2"
+				maxLength="30"
+				value={cardName}
+				onChange={handleSetName} />
 			<span className="form__error-message" id="cardName-error"></span>
-			<input className="form__field form__field_type_cardlink" type="url" placeholder="Ссылка на картинку" name="cardLink" required value={cardLink} onChange={handleSetLink} />
+			<input
+				className="form__field form__field_type_cardlink"
+				type="url"
+				placeholder="Ссылка на картинку"
+				name="cardLink"
+				required
+				value={cardLink}
+				onChange={handleSetLink} />
 			<span className="form__error-message" id="cardLink-error"></span>
 		</PopupWithForm>
 	);

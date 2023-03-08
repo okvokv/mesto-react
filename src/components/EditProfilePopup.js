@@ -45,9 +45,28 @@ function ProfileEditPopup(props) {
 			onSubmit={handleSubmit}
 		>
 			{/* == ядро с формой редактирования профиля ===========================*/}
-			<input className="form__field form__field_type_name" type="text" placeholder="Имя" name="name" autoFocus required minLength="2" maxLength="50" value={name} onChange={handleChangeName} />
+			<input
+				className="form__field form__field_type_name"
+				type="text"
+				placeholder="Имя"
+				name="name"
+				autoFocus
+				required
+				minLength="2"
+				maxLength="50"
+				value={name}
+				onChange={handleChangeName} />
 			<span className="form__error-message" id="name-error"></span>
-			<input className="form__field form__field_type_description" type="text" placeholder="О себе" name="description" required minLength="2" maxLength="200" value={description} onChange={handleChangeDescription} />
+			<input
+				className="form__field form__field_type_description"
+				type="text"
+				placeholder="О себе"
+				name="description"
+				required
+				minLength="2"
+				maxLength="200"
+				value={description}
+				onChange={handleChangeDescription} />
 			<span className="form__error-message" id="description-error"></span>
 		</PopupWithForm>
 	);

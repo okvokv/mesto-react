@@ -11,8 +11,8 @@ function AvatarEditPopup(props) {
 	function handleSubmit(event) {
 		event.preventDefault();
 		props.onUpdateAvatar(avatarLink.current.value);
-  }
-	
+	}
+
 	return (
 		<PopupWithForm
 			type={'avatar'}
@@ -23,7 +23,13 @@ function AvatarEditPopup(props) {
 			onSubmit={handleSubmit}
 		>
 			{/* == ядро с формой смены аватара ===================================*/}
-			<input className="form__field form__field_type_avatarlink" type="url" placeholder="Ссылка на аватар" name="avatarLink" required ref={avatarLink} />
+			<input
+				className="form__field form__field_type_avatarlink"
+				type="url"
+				placeholder="Ссылка на аватар"
+				name="avatarLink"
+				required
+				ref={avatarLink} />
 			<span className="form__error-message" id="avatarLink-error"></span>
 		</PopupWithForm>
 	);
