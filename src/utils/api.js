@@ -4,27 +4,23 @@ const headers = {
 	authorization: 'ba4cd59f-b9e5-45d4-a657-2ca4f8fa9389',
 	'Content-Type': 'application/json'
 };
-
 class Api {
 	constructor(baseUrl, headers) {
 		this._baseUrl = baseUrl;
 		this._headers = headers;
 	};
 
-	//общая часть запроса
+	//общая часть запроса и его обработки
 	_request(_endUrl, _options) {
 		return fetch(`${this._baseUrl}/${_endUrl}`, _options)
-			.then((res) => this._checkResponse(res))
-	};
-
-	//общий метод обработки ответа
-	_checkResponse(res) {
-		if (res.ok) {
-			//если запрос выполнен
-			return res.json()
-		}
-		//если сервер вернул ошибку, отклонить промис
-		return Promise.reject(`Ошибка: ${res.status}`)
+			.then(res => {
+				if (res.ok) {
+					//если запрос выполнен
+					return res.json();
+				}
+				//если сервер вернул ошибку, отклонить промис
+				return Promise.reject(`Ошибка: ${res.status}`)
+			})
 	};
 
 	//метод получения данных пользователя
@@ -85,7 +81,7 @@ class Api {
 
 	//метод удаления своей карточки на сервере и получения информации о результате
 	deleteCard(_cardId) {
-		return this._request('cards/_cardId', {
+		return this._request(`cards/${_cardId}`, {
 			method: 'DELETE',
 			headers: this._headers
 		})
@@ -93,7 +89,8 @@ class Api {
 
 	//метод установки лайка и получения данных о результате
 	setLike(_cardId) {
-		return this._request('cards/_cardId/likes', {
+		console.log('доб.')
+		return this._request(`cards/${_cardId}/likes`, {
 			method: 'PUT',
 			headers: this._headers
 		})
@@ -101,7 +98,8 @@ class Api {
 
 	//метод удаления лайка (поставленного пользователем)
 	deleteLike(_cardId) {
-		return this._request('cards/_cardId/likes', {
+		console.log('снят')
+		return this._request(`cards/${_cardId}/likes`, {
 			method: 'DELETE',
 			headers: this._headers
 		})
