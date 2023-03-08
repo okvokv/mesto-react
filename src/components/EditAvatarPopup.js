@@ -10,8 +10,7 @@ function AvatarEditPopup(props) {
 	//промежуточная функция отправки ссылки
 	function handleSubmit(event) {
 		event.preventDefault();
-		console.log(avatarLink.current.value)
-		props.onUpdateAvatar(avatarLink.current.input.textContent);
+		props.onUpdateAvatar(avatarLink.current.value);
   }
 	
 	return (
