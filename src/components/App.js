@@ -105,13 +105,15 @@ function App() {
       api.deleteLike(cardData._id)
         .then(newCardData => {
           setCardsData(cardsData => cardsData.map(item => (item._id === cardData._id) ? newCardData : item));
-        });
+        })
+        .catch(err => console.log('Внутренняя ошибка: ', err))
       return;
     }
     api.setLike(cardData._id)
       .then(newCardData => {
         setCardsData(cardsData => cardsData.map(item => (item._id === cardData._id) ? newCardData : item));
-      });
+      })
+      .catch(err => console.log('Внутренняя ошибка: ', err))
   };
 
   //функция отправки данных для смены аватара

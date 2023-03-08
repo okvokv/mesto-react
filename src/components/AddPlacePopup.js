@@ -4,7 +4,7 @@ import PopupWithForm from './PopupWithForm.js';
 //гибридный элемент - всплывающее окно добавления контента
 function CardAddPopup(props) {
 
-	//объявление данных rарточки в глобальной области
+	//объявление данных карточки в глобальной области
 	const [cardName, setCardName] = useState('');
 	const [cardLink, setCardLink] = useState('');
 
@@ -35,7 +35,7 @@ function CardAddPopup(props) {
 		>
 			{/* == ядро с формой добавления контента ===============================*/}
 			<input className="form__field form__field_type_cardname" type="text" placeholder="Название" name="cardName" required
-				minLength="2" maxLength="30" value={cardName} onChange={handleSetName} />
+				minLength="2" maxLength="30" value={cardName} />
 			<span className="form__error-message" id="cardName-error"></span>
 			<input className="form__field form__field_type_cardlink" type="url" placeholder="Ссылка на картинку" name="cardLink" required value={cardLink} onChange={handleSetLink} />
 			<span className="form__error-message" id="cardLink-error"></span>

@@ -3,6 +3,7 @@ import { CurrentUserContext } from '../contexts/CurrentUserContext.js';
 
 //гибридный элемент одной карточки массива
 function Card(props) {
+	
 	//подписка на контекст
 	const currentUserData = React.useContext(CurrentUserContext);
 
