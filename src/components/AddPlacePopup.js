@@ -27,8 +27,8 @@ function CardAddPopup(props) {
 	return (
 		<PopupWithForm
 			type={'card'}
-			formTitle="Новое место"
-			btnText="Создать"
+			formTitle='Новое место'
+			btnText='Создать'
 			opened={props.opened}
 			onClose={props.onClose}
 			onSubmit={handleSubmit}

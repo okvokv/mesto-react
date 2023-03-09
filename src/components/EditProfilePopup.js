@@ -19,6 +19,7 @@ function ProfileEditPopup(props) {
 		setDescription(currentUserData.about);
 	}, [currentUserData]);
 
+	//------------------------------------------------------------------------
 	//функция изменения имени
 	function handleChangeName(event) {
 		setName(event.target.value)
@@ -35,11 +36,12 @@ function ProfileEditPopup(props) {
 		props.onUpdateUser(name, description);
 	};
 
+	//--------------------------------------------------------------------------
 	return (
 		<PopupWithForm
 			type={'profile'}
-			formTitle="Редактировать профиль"
-			btnText="Сохранить"
+			formTitle='Редактировать профиль'
+			btnText='Сохранить'
 			opened={props.opened}
 			onClose={props.onClose}
 			onSubmit={handleSubmit}

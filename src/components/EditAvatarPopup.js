@@ -16,8 +16,8 @@ function AvatarEditPopup(props) {
 	return (
 		<PopupWithForm
 			type={'avatar'}
-			formTitle="Обновить аватар"
-			btnText="Сохранить"
+			formTitle='Обновить аватар'
+			btnText='Сохранить'
 			opened={props.opened}
 			onClose={props.onClose}
 			onSubmit={handleSubmit}

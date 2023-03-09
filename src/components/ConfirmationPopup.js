@@ -10,9 +10,9 @@ function PopupWithConfirmation(props) {
 
 	return (
 		<PopupWithForm
-			type={'delConfirm'}
-			formTitle="Вы уверены ?"
-			btnText="Да"
+			type='delConfirm'
+			formTitle='Вы уверены ?'
+			btnText='Да'
 			opened={props.opened}
 			onClose={props.onClose}
 			onSubmit={handleSubmit}

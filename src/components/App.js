@@ -21,15 +21,17 @@ function App() {
   const [cardsData, setCardsData] = useState([]);
 
   //получение начальных данных с сервера, однократно
-  api.getInitialData()
-    .then(data => {
-      const [currentUserData, cardsData] = data;
-      setCurrentUserData(currentUserData);
-      setCardsData(cardsData);
-    })
-    .catch(err => console.log('Внутренняя ошибка: ', err))
+  useEffect(() => {
+    api.getInitialData()
+      .then(data => {
+        const [currentUserData, cardsData] = data;
+        setCurrentUserData(currentUserData);
+        setCardsData(cardsData);
+      })
+      .catch(err => console.log('Внутренняя ошибка: ', err))
+  }, []);
 
-  //задание обновления массива карточек
+  //задание обновления локального массива карточек
   useEffect(() => {
     setCardsData(cardsData);
   }, [cardsData]);
