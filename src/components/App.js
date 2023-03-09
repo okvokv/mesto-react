@@ -99,19 +99,18 @@ function App() {
   //функция обработки нажатия на кнопку <Like>
   function handleLikeClick(cardId, liked) {
     //запрос в api, получение обновлённых данных карточки и замена на них в массиве
-    if (liked) {
+    liked ?
       api.deleteLike(cardId)
         .then(newCardData => {
-          setCardsData(cardsData.map(cardData => (cardData._id === cardId) ? newCardData : cardData));
+          setCardsData(cardsData.map(cardData => (cardData._id === cardId) ? newCardData : cardData))
         })
         .catch(err => console.log('Внутренняя ошибка: ', err))
-      return;
-    }
-    api.setLike(cardId)
-      .then(newCardData => {
-        setCardsData(cardsData.map(cardData => (cardData._id === cardId) ? newCardData : cardData));
-      })
-      .catch(err => console.log('Внутренняя ошибка: ', err))
+      :
+      api.setLike(cardId)
+        .then(newCardData => {
+          setCardsData(cardsData.map(cardData => (cardData._id === cardId) ? newCardData : cardData))
+        })
+        .catch(err => console.log('Внутренняя ошибка: ', err))
   };
 
   //функция отправки данных для смены аватара
