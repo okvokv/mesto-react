@@ -23,7 +23,7 @@ function Card(props) {
 	}
 
 	function handleLikeClick() {
-		props.onLikeClick(props.cardData, liked)
+		props.onLikeClick(props.cardData._id, liked)
 	}
 
 	return (

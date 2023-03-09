@@ -31,12 +31,7 @@ function App() {
       .catch(err => console.log('Внутренняя ошибка: ', err))
   }, []);
 
-  //задание обновления локального массива карточек
-  useEffect(() => {
-    setCardsData(cardsData);
-  }, [cardsData]);
-
-  //----------------------------------------------------------------------------------
+   //----------------------------------------------------------------------------------
   //функция закрытия попапов
   function closeAllPopups() {
     setAvatarEditPopupOpened(false);
@@ -102,16 +97,18 @@ function App() {
 
   //---------------------------------------------------------------------------------
   //функция обработки нажатия на кнопку <Like>
-  function handleLikeClick(cardData, liked) {
+  function handleLikeClick(cardId, liked) {
     //запрос в api, получение обновлённых данных карточки и замена на них в массиве
     liked ?
-      api.deleteLike(cardData._id)
-        .then(newCardData => cardData.likes.length = newCardData.likes.length)
-        .catch(err => console.log('Внутренняя ошибка: ', err))
+      api.deleteLike(cardId)
+        .then(newCardData => {
+          setCardsData(cardsData.map(cardData => (cardData._id === cardId) ? newCardData : cardData))
+        })
       :
-      api.setLike(cardData._id)
-        .then(newCardData => cardData.likes.length = newCardData.likes.length)
-        .catch(err => console.log('Внутренняя ошибка: ', err))
+      api.setLike(cardId)
+        .then(newCardData => {
+          setCardsData(cardsData.map(cardData => (cardData._id === cardId) ? newCardData : cardData))
+        })
   };
 
   //функция отправки данных для смены аватара

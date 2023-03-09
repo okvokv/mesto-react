@@ -22,12 +22,12 @@ function ProfileEditPopup(props) {
 	//------------------------------------------------------------------------
 	//функция изменения имени
 	function handleChangeName(event) {
-		setName(event.target.value)
+		setName(event.target.value);
 	}
 
 	//функция изменения описания
 	function handleChangeDescription(event) {
-		setDescription(event.target.value)
+		setDescription(event.target.value);
 	}
 
 	//промежуточная функция отправки содержания
