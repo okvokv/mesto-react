@@ -29,7 +29,7 @@ function App() {
     })
     .catch(err => console.log('Внутренняя ошибка: ', err))
 
-  //задание обновления массива карточек
+  //задание обновления локального массива карточек
   useEffect(() => {
     setCardsData(cardsData);
   }, [cardsData]);
