@@ -3,7 +3,7 @@ import { CurrentUserContext } from '../contexts/CurrentUserContext.js';
 
 //гибридный элемент одной карточки массива
 function Card(props) {
-	
+
 	//подписка на контекст
 	const currentUserData = React.useContext(CurrentUserContext);
 
@@ -23,8 +23,7 @@ function Card(props) {
 	}
 
 	function handleLikeClick() {
-		props.onLikeClick(props.cardData._id, liked)
-
+		props.onLikeClick(props.cardData, liked)
 	}
 
 	return (

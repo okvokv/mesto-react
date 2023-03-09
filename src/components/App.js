@@ -21,15 +21,18 @@ function App() {
   const [cardsData, setCardsData] = useState([]);
 
   //получение начальных данных с сервера, однократно
+  api.getInitialData()
+    .then(data => {
+      const [currentUserData, cardsData] = data;
+      setCurrentUserData(currentUserData);
+      setCardsData(cardsData);
+    })
+    .catch(err => console.log('Внутренняя ошибка: ', err))
+
+  //задание обновления массива карточек
   useEffect(() => {
-    api.getInitialData()
-      .then(data => {
-        const [currentUserData, cardsData] = data;
-        setCurrentUserData(currentUserData);
-        setCardsData(cardsData);
-      })
-      .catch(err => console.log('Внутренняя ошибка: ', err))
-  }, []);
+    setCardsData(cardsData);
+  }, [cardsData]);
 
   //----------------------------------------------------------------------------------
   //функция закрытия попапов
@@ -97,19 +100,15 @@ function App() {
 
   //---------------------------------------------------------------------------------
   //функция обработки нажатия на кнопку <Like>
-  function handleLikeClick(cardId, liked) {
+  function handleLikeClick(cardData, liked) {
     //запрос в api, получение обновлённых данных карточки и замена на них в массиве
     liked ?
-      api.deleteLike(cardId)
-        .then(newCardData => {
-          setCardsData(cardsData.map(cardData => (cardData._id === cardId) ? newCardData : cardData))
-        })
+      api.deleteLike(cardData._id)
+        .then(newCardData => cardData.likes.length = newCardData.likes.length)
         .catch(err => console.log('Внутренняя ошибка: ', err))
       :
-      api.setLike(cardId)
-        .then(newCardData => {
-          setCardsData(cardsData.map(cardData => (cardData._id === cardId) ? newCardData : cardData))
-        })
+      api.setLike(cardData._id)
+        .then(newCardData => cardData.likes.length = newCardData.likes.length)
         .catch(err => console.log('Внутренняя ошибка: ', err))
   };
 
@@ -146,7 +145,6 @@ function App() {
   };
 
   //--------------------------------------------------------------------------
-
   return (
     <CurrentUserContext.Provider value={currentUserData}>
       <div className="page">

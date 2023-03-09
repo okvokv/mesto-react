@@ -56,7 +56,9 @@ function ProfileEditPopup(props) {
 				maxLength="50"
 				value={name}
 				onChange={handleChangeName} />
+
 			<span className="form__error-message" id="name-error"></span>
+
 			<input
 				className="form__field form__field_type_description"
 				type="text"
@@ -67,6 +69,7 @@ function ProfileEditPopup(props) {
 				maxLength="200"
 				value={description}
 				onChange={handleChangeDescription} />
+
 			<span className="form__error-message" id="description-error"></span>
 		</PopupWithForm>
 	);

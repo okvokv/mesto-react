@@ -3,11 +3,11 @@ import PopupWithForm from './PopupWithForm.js';
 function PopupWithConfirmation(props) {
 
 	//промежуточная функция обработки запроса на удаление
-	function handleSubmit(event){
+	function handleSubmit(event) {
 		event.preventDefault();
 		props.onCardDelete(props.clickedImage)
 	};
-	
+
 	return (
 		<PopupWithForm
 			type={'delConfirm'}
