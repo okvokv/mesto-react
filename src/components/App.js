@@ -31,7 +31,7 @@ function App() {
       .catch(err => console.log('Внутренняя ошибка: ', err))
   }, []);
 
-  //-------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------
   //функция закрытия попапов
   function closeAllPopups() {
     setAvatarEditPopupOpened(false);
@@ -42,7 +42,7 @@ function App() {
     setClickedImage({});
   };
 
-  //-------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------
   //объявление состояния попапа с аватаром в глобальной области
   const [avatarEditPopupOpened, setAvatarEditPopupOpened] = useState(false);
   //функция обработки нажатия на аватар
@@ -64,7 +64,7 @@ function App() {
     setCardAddPopupOpened(true);
   };
 
-  //----------------------------------------------------------------------------------
+  //---------------------------------------------------------------------------------
   //объявление состояния попапа с большой картинкой в глобальной области
   const [imagePopupOpened, setImagePopupOpened] = useState(false);
   //объявление данных нажатой картики в глобальной области
@@ -75,7 +75,7 @@ function App() {
     setImagePopupOpened(true);
   };
 
-  //-----------------------------------------------------------------------------------  
+  //---------------------------------------------------------------------------------  
   //объявление состояния попапа подтверждения удаления в глобальной области
   const [popupWithConfirmationOpened, setPopupWithConfirmationOpened] = useState(false);
   //функция обработки нажатия на корзину 
@@ -86,33 +86,30 @@ function App() {
 
   //функция отправки данных для удаления карточки  
   function handleDeleteCard(cardId) {
-    //запрос в api 
+    //запрос в api и удаление из массива всех карточек с cardId 
     api.deleteCard(cardId)
       .then(() => {
-        const newCardsData = cardsData.filter(cardData => cardData._id !== cardId);
-        setCardsData(newCardsData);
+        setCardsData(cardsData.filter(cardData => cardData._id !== cardId));
         closeAllPopups();
       })
       .catch(err => console.log('Внутренняя ошибка: ', err))
   };
 
-  //-----------------------------------------------------------------------------------
+  //---------------------------------------------------------------------------------
   //функция обработки нажатия на кнопку <Like>
-  function handleLikeClick(cardData) {
-    //проверка наличия лайка на карточке
-    const liked = cardData.likes.some(like => like._id === currentUserData._id);
+  function handleLikeClick(cardId, liked) {
     //запрос в api, получение обновлённых данных карточки и замена на них в массиве
     if (liked) {
-      api.deleteLike(cardData._id)
+      api.deleteLike(cardId)
         .then(newCardData => {
-          setCardsData(cardsData => cardsData.map(item => (item._id === cardData._id) ? newCardData : item));
+          setCardsData(cardsData.map(cardData => (cardData._id === cardId) ? newCardData : cardData));
         })
         .catch(err => console.log('Внутренняя ошибка: ', err))
       return;
     }
-    api.setLike(cardData._id)
+    api.setLike(cardId)
       .then(newCardData => {
-        setCardsData(cardsData => cardsData.map(item => (item._id === cardData._id) ? newCardData : item));
+        setCardsData(cardsData.map(cardData => (cardData._id === cardId) ? newCardData : cardData));
       })
       .catch(err => console.log('Внутренняя ошибка: ', err))
   };

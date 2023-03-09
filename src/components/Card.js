@@ -9,8 +9,8 @@ function Card(props) {
 
 	//проверка владельца
 	const owned = (props.cardData.owner._id === currentUserData._id);
-	//проверка наличия лайка
-	const liked = props.cardData.likes.some(like => like._id === currentUserData._id);
+	//проверка наличия лайка на карточке
+	const liked = props.cardData.likes.find(like => like._id === currentUserData._id);
 
 	//промежуточные функции:
 
@@ -23,7 +23,8 @@ function Card(props) {
 	}
 
 	function handleLikeClick() {
-		props.onLikeClick(props.cardData)
+		props.onLikeClick(props.cardData._id, liked)
+
 	}
 
 	return (
