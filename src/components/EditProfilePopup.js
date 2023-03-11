@@ -36,17 +36,17 @@ function ProfileEditPopup(props) {
 		props.onUpdateUser(name, description);
 	};
 
-	//--------------------------------------------------------------------------
+	//----------------------------------------------------------------------
 	return (
 		<PopupWithForm
-			type={'profile'}
+			type='profile'
 			formTitle='Редактировать профиль'
 			btnText='Сохранить'
 			opened={props.opened}
 			onClose={props.onClose}
 			onSubmit={handleSubmit}
 		>
-			{/* == ядро с формой редактирования профиля ===========================*/}
+			{/* == ядро с формой редактирования профиля ====================*/}
 			<input
 				className="form__field form__field_type_name"
 				type="text"

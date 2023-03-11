@@ -15,7 +15,7 @@ function AvatarEditPopup(props) {
 
 	return (
 		<PopupWithForm
-			type={'avatar'}
+			type='avatar'
 			formTitle='Обновить аватар'
 			btnText='Сохранить'
 			opened={props.opened}
