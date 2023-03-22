@@ -4,7 +4,7 @@ import avatar from '../images/avatar.png';
 import auth from '../utils/auth.js';
 import api from '../utils/api.js';
 import Header from './Header.js';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import Register from './Register.js';
 import Login from './Login.js';
 import ProtectedRoute from './ProtectedRoute.js';
@@ -89,7 +89,7 @@ function App() {
   //объявление состояния регистрации в глобальной области
   const [regSuccess, setRegSuccess] = useState(false);
   //обьявление значения почты пользователя в глобальной области
-  const [userEmail, setUserEmail] = useState('***@***.***');
+  const [userEmail, setUserEmail] = useState('');
 
   //функция отправки данных на регистрацию и обработки ответа
   function handleRegistration(email, password) {
@@ -122,13 +122,13 @@ function App() {
   };
 
   //задание переменной навигации
-  //const navigate = useNavigate();
+  const navigate = useNavigate();
   //функция замены страницы
   function handleTogglePage() {
     //как программно узнать на каком линке мы находимся сейчас ? 
     //линк ? {   
-    //navigate('/sign-up')
-    //setHeaderBtnText('Вход')
+    navigate('/sign-up')
+    setHeaderBtnText('Вход')
     //}
     //:
     //{
