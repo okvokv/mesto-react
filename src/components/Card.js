@@ -9,6 +9,7 @@ function Card(props) {
 
 	//проверка владельца
 	const owned = (props.cardData.owner._id === currentUserData._id);
+
 	//проверка наличия лайка на карточке
 	const liked = props.cardData.likes.find(like => like._id === currentUserData._id);
 
@@ -41,7 +42,10 @@ function Card(props) {
 			<div className="element__caption">
 				<h2 className="element__text">{props.cardData.name}</h2>
 				<div className="element__group">
-					<button className={`element__icon-button ${liked && 'element__icon-button_active'}`} type="button" onClick={handleLikeClick}></button>
+					<button
+						className={`element__icon-button ${liked && 'element__icon-button_active'}`} type="button"
+						onClick={handleLikeClick}>
+					</button>
 					<h2 className="element__counter">{props.cardData.likes.length}</h2>
 				</div>
 			</div>

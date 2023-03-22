@@ -1,9 +1,7 @@
-import { useState } from 'react';
-
 //Подножие сайта ======================================================
 function Footer() {
   //получение значения года
-  const [year] = useState(new Date().getFullYear());
+  const year = new Date().getFullYear();
 
   return (
     <footer className="footer">

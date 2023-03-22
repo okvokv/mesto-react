@@ -33,6 +33,7 @@ function ProfileEditPopup(props) {
 	//промежуточная функция отправки содержания
 	function handleSubmit(event) {
 		event.preventDefault();
+		props.changeBtnText('Сохранение...');
 		props.onUpdateUser(name, description);
 	};
 
@@ -41,7 +42,7 @@ function ProfileEditPopup(props) {
 		<PopupWithForm
 			type='profile'
 			formTitle='Редактировать профиль'
-			btnText='Сохранить'
+			btnText={props.btnText}
 			opened={props.opened}
 			onClose={props.onClose}
 			onSubmit={handleSubmit}
@@ -52,12 +53,13 @@ function ProfileEditPopup(props) {
 				type="text"
 				placeholder="Имя"
 				name="name"
-				autoFocus
-				required
 				minLength="2"
 				maxLength="50"
 				value={name}
-				onChange={handleChangeName} />
+				onChange={handleChangeName}
+				autoFocus
+				required
+				/>
 
 			<span className="form__error-message" id="name-error"></span>
 
@@ -66,11 +68,12 @@ function ProfileEditPopup(props) {
 				type="text"
 				placeholder="О себе"
 				name="description"
-				required
 				minLength="2"
 				maxLength="200"
 				value={description}
-				onChange={handleChangeDescription} />
+				onChange={handleChangeDescription} 
+				required
+				/>
 
 			<span className="form__error-message" id="description-error"></span>
 		</PopupWithForm>

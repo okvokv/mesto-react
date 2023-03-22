@@ -21,6 +21,7 @@ function CardAddPopup(props) {
 	//промежуточная функция отправки данных карточки
 	function handleSubmit(event) {
 		event.preventDefault();
+		props.changeBtnText('Сохранение...');
 		props.onCardAdd(cardName, cardLink);
 	};
 
@@ -28,7 +29,7 @@ function CardAddPopup(props) {
 		<PopupWithForm
 			type={'card'}
 			formTitle='Новое место'
-			btnText='Создать'
+			btnText={props.btnText}
 			opened={props.opened}
 			onClose={props.onClose}
 			onSubmit={handleSubmit}
@@ -39,20 +40,23 @@ function CardAddPopup(props) {
 				type="text"
 				placeholder="Название"
 				name="cardName"
-				required
 				minLength="2"
 				maxLength="30"
 				value={cardName}
-				onChange={handleSetName} />
+				onChange={handleSetName}
+				autoFocus
+				required
+				/>
 			<span className="form__error-message" id="cardName-error"></span>
 			<input
 				className="form__field form__field_type_cardlink"
 				type="url"
 				placeholder="Ссылка на картинку"
 				name="cardLink"
-				required
 				value={cardLink}
-				onChange={handleSetLink} />
+				onChange={handleSetLink} 
+				required
+				/>
 			<span className="form__error-message" id="cardLink-error"></span>
 		</PopupWithForm>
 	);

@@ -10,6 +10,7 @@ function AvatarEditPopup(props) {
 	//промежуточная функция отправки ссылки
 	function handleSubmit(event) {
 		event.preventDefault();
+		props.changeBtnText('Сохранение...');
 		props.onUpdateAvatar(avatarLink.current.value);
 	}
 
@@ -17,7 +18,7 @@ function AvatarEditPopup(props) {
 		<PopupWithForm
 			type='avatar'
 			formTitle='Обновить аватар'
-			btnText='Сохранить'
+			btnText={props.btnText}
 			opened={props.opened}
 			onClose={props.onClose}
 			onSubmit={handleSubmit}
@@ -28,8 +29,10 @@ function AvatarEditPopup(props) {
 				type="url"
 				placeholder="Ссылка на аватар"
 				name="avatarLink"
+				ref={avatarLink}
+				autoFocus
 				required
-				ref={avatarLink} />
+				/>
 			<span className="form__error-message" id="avatarLink-error"></span>
 		</PopupWithForm>
 	);
